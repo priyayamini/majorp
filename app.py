@@ -1,15 +1,17 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
-from tensorflow.keras.utils import pad_sequences
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.models import load_model
 import re
 
 # Initialize Flask app
 flask_app = Flask(__name__)
 
 # Load model and tokenizer
-model = pickle.load(open("Glove.pkl", "rb"))
-tokenizer = pickle.load(open("tokenizer.pkl", "rb"))
+model = load_model("Glove_model")  # Load the model saved by model.save()
+with open("tokenizer.pkl", "rb") as handle:
+    tokenizer = pickle.load(handle)
 
 # Define text preprocessing (same as used in training)
 def process_text(text):

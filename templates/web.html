@@ -127,12 +127,21 @@
     <div class="form-box">
       <h2>Enter the Job Description</h2>
       <form action="/predict" method="POST">
-        <div class="form-group">
-          <label for="jobdesc">Job Description</label>
-          <textarea id="jobdesc" name="description" rows="5" placeholder="Enter job description..."></textarea>
-        </div>
-        <button type="submit">SEND</button>
-      </form>
+  <div class="form-group">
+    <label for="orgname">Name of the Organisation</label>
+    <input type="text" id="orgname" placeholder="Enter organization name..." />
+  </div>
+  <div class="form-group">
+    <label for="jobrole">Job Role</label>
+    <input type="text" id="jobrole" placeholder="Enter job role..." />
+  </div>
+  <div class="form-group">
+    <label for="jobdesc">Job Description</label>
+    <textarea id="jobdesc" name="description" rows="5" placeholder="Enter job description..."></textarea>
+  </div>
+  <button type="submit">SEND</button>
+</form>
+
       {% if prediction_text %}
         <div class="result">{{ prediction_text }}</div>
       {% endif %}
